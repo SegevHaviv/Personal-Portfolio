@@ -1,58 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-
+import { withStyles, Grid, Typography } from '@material-ui/core';
+import Resume from './Resume';
+import TitleLayout from './TitleLayout';
 
 const styles = theme => ({
-    root: {
-      flexGrow: 1,
-    },
-    grid: {
-        paddingTop: 150,
-        paddingBottom: 400,
-        background: 'rgba(0, 0, 0, 0) linear-gradient(to right, rgb(55, 59, 68), rgb(66, 134, 244)) repeat scroll 0% 0%;',
-        textAlign: 'center',
-        color: 'white',
-        whiteSpace: 'noWrap',
-    },
-  });
-  
+  root: {
+    flexGrow: 1,
+  },
+  grid: {
+    color: 'white',
+    background: '#085078',  /* fallback for old browsers */
+    background: '-webkit-linear-gradient(to right, #85D8CE, #085078)',  /* Chrome 10-25, Safari 5.1-6 */
+    background: 'linear-gradient(to right, #85D8CE, #085078)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    paddingTop: 150,
+    paddingBottom: 400,
+    textAlign: 'center',
+  },
+});
+
 const CustomGrid = (props) => {
-    const { classes } = props;
-  
-    return (
-      <div className={classes.root}>
-        <Grid container spacing={36}>
+  const { classes } = props;
 
-          <Grid item xs={12} className ={classes.grid} id="titleGrid">
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={36}>
 
-
-            <Typography color='inherit' align='cetner' variant="h1">Hi, I'm Segev </Typography>    
-            <h1><strong>A Full Stack Developer</strong></h1>
-          </Grid>
-
-          <Grid item xs={12} className ={classes.grid} id="resumeGrid">
-            <h1 style={{fontSize: 150}}>Resume</h1>
-          </Grid>
-
-          <Grid item xs={12} className ={classes.grid} id="projectsGrid">
-          <h1 style={{fontSize: 150}}>Projects</h1>
-          </Grid>
-
-          <Grid item xs={12} className ={classes.grid} id="contactGrid">
-          <h1 style={{fontSize: 150}}>Contact</h1>
-          </Grid>
-
-
+        <Grid item xs={12} className={classes.grid} id="title">
+          <TitleLayout/>
         </Grid>
-      </div>
-    );
-  }
-  
-  CustomGrid.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(CustomGrid);
+
+        <Grid item xs={12} className={classes.grid} id="resume">
+          <Resume/>
+        </Grid>
+
+        <Grid item xs={12} className={classes.grid} id="projects">
+          <h1 style={{ fontSize: 150 }}>Projects</h1>
+        </Grid>
+
+        <Grid item xs={12} className={classes.grid} id="contact">
+          <h1 style={{ fontSize: 150 }}>Contact</h1>
+        </Grid>
+
+
+      </Grid>
+    </div>
+  );
+}
+
+CustomGrid.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(CustomGrid);
