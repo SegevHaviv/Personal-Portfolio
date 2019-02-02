@@ -1,12 +1,12 @@
+/* eslint-disable no-dupe-keys */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Button, Typography, Toolbar, withStyles, withTheme} from '@material-ui/core/'
+import { AppBar, Button, Typography, Toolbar, withStyles, CssBaseline} from '@material-ui/core/'
  
 
 const styles = {
   root: {
     flexGrow: 1,
-    position: 'fixed',
     right:0,
     left: 0,
   },
@@ -38,21 +38,24 @@ const styles = {
 function NavBar(props) {
   const { classes } = props;
   return (
+    <React.Fragment>
+      <CssBaseline/>
     <div className={classes.root}>
-      <AppBar position="static" color="inherit" className = {classes.appBar}>
+      <AppBar color="inherit" className = {classes.appBar}>
         <Toolbar>
           
           <Typography variant="h6" color="inherit" className={classes.title}>
             <a className = {classes.titleButton} href="#title">Segev Haviv</a>
           </Typography>
 
-          <Button href="#resume" className={classes.button}>Resume</Button>
           <Button href="#projects" className={classes.button}>Projects</Button>
+          <Button href="#resume" className={classes.button}>Resume</Button>
           <Button href="#contact"className={classes.button}>Contact</Button>
 
         </Toolbar>
       </AppBar>
     </div>
+    </React.Fragment>
   );
 }
 
