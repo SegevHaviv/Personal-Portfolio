@@ -7,6 +7,7 @@ import { AppBar, Button, Typography, Toolbar, withStyles, CssBaseline} from '@ma
 const styles = {
   root: {
     flexGrow: 1,
+    padding: '2em',
     right:0,
     left: 0,
   },
@@ -41,16 +42,16 @@ function NavBar(props) {
     <React.Fragment>
       <CssBaseline/>
     <div className={classes.root}>
-      <AppBar color="inherit" className = {classes.appBar}>
+      <AppBar color="inherit" className = {classes.appBar} style={{ margin: 0 }}>
         <Toolbar>
           
           <Typography variant="h6" color="inherit" className={classes.title}>
-            <a className = {classes.titleButton} href="#title">Segev Haviv</a>
+            <a className = {classes.titleButton} href="/">Segev Haviv</a>
           </Typography>
 
-          <Button href="#projects" className={classes.button}>Projects</Button>
-          <Button href="#resume" className={classes.button}>Resume</Button>
-          <Button href="#contact"className={classes.button}>Contact</Button>
+          <Button href="projects" className={classes.button}>Projects</Button>
+          <Button href="resume" className={classes.button}>Resume</Button>
+          <Button href="contact"className={classes.button}>Contact</Button>
 
         </Toolbar>
       </AppBar>

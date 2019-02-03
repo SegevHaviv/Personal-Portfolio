@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles, Grid, CssBaseline } from '@material-ui/core';
 
 import Resume from './Resume';
-import TitleLayout from './TitleLayout';
+import TitleLayout from './LandingPage';
 import Projects from './Projects'
 import Contact from './Contact'
 
@@ -27,6 +27,7 @@ const CustomGrid = (props) => {
   return (
     <React.Fragment>
       <CssBaseline />
+      
       <div className={classes.root}>
         <Grid container spacing={36}>
 

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import NavBar from './NavBar.js'
-import CustomGrid from './CustomGrid'
+import NavBar from './components/NavBar.js';
+import Main from './components/Main';
 
 class App extends Component {
   render() {
+    
     return (
+
       <div>
-      <NavBar/>
-      <CustomGrid/>
+        <NavBar/>
+        <Main/>
+        
       </div>
     );
   }

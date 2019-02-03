@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core'
 
 const styles = {
   root: {
-    margin: 230,
+    
   },
 }
 
