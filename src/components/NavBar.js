@@ -1,8 +1,7 @@
 /* eslint-disable no-dupe-keys */
-import React from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Button, Typography, Toolbar, withStyles, CssBaseline} from '@material-ui/core/'
- 
+import { AppBar, Button, Typography, Toolbar, withStyles, CssBaseline, Tab, Tabs} from '@material-ui/core/'
 
 const styles = {
   root: {
@@ -12,12 +11,15 @@ const styles = {
     left: 0,
   },
   title: {
-    flexGrow: 1,
+    textTransform: 'capitalize',
     marginLeft: 20,
     fontSize: 32,
     fontFamily: 'Montserrat',
   },
-  button: {
+  titleContainer: {
+    flexGrow: 1,
+  },
+  tab: {
     paddingLeft: 50,
     paddingRight: 50,
     color: 'white',
@@ -34,30 +36,50 @@ const styles = {
     color: 'inherit',
     textDecoration: 'none',
   },
+  bigIndicator: {
+    height: 0,
+  },
 };
 
-function NavBar(props) {
-  const { classes } = props;
+class NavBar extends Component {
+
+  render(){
+  const {classes , onSelect , tabValue , onTitleSelected} = this.props;
+
   return (
-    <React.Fragment>
+    <Fragment>
       <CssBaseline/>
     <div className={classes.root}>
       <AppBar color="inherit" className = {classes.appBar} style={{ margin: 0 }}>
         <Toolbar>
           
-          <Typography variant="h6" color="inherit" className={classes.title}>
-            <a className = {classes.titleButton} href="/">Segev Haviv</a>
-          </Typography>
+          <div className={classes.titleContainer}>
+            <Button className={classes.titleButton} onClick={onTitleSelected}>
+              <Typography variant="h6" color="inherit" className={classes.title}>
+                 Segev Haviv 
+              </Typography>
+            </Button>
+          </div>
 
-          <Button href="projects" className={classes.button}>Projects</Button>
-          <Button href="resume" className={classes.button}>Resume</Button>
-          <Button href="contact"className={classes.button}>Contact</Button>
+           <Tabs 
+           centered 
+           value={tabValue} 
+           onChange={(e,index) => onSelect(index)} 
+           className={classes.tab}
+           classes={{ indicator: classes.bigIndicator }}
+           >
+
+              <Tab label="Projects" />
+              <Tab label="Resume"/>
+              <Tab label="Contact"/>
+           </Tabs>
 
         </Toolbar>
       </AppBar>
     </div>
-    </React.Fragment>
+    </Fragment>
   );
+  }
 }
 
 NavBar.propTypes = {

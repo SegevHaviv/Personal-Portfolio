@@ -18,12 +18,8 @@ const styles = {
     },
 
     socialLinks: {
-      fontSize: 50,  
-      textDecoration: 'none',
-      marginRight: 30,
-      marginLeft: 30,
-      color: 'inherit',
-      },
+      margin:'auto',
+    },
     banner:{
       textAlign: 'center',
       padding: 10,
@@ -54,27 +50,51 @@ render() {
     <Fragment>
       <CssBaseline/>
       <div className={classes.root}>
-      <Fade  in={true} timeout={1500}>
+        <Fade in timeout={{enter: 1500}}>
         <div className = {classes.banner}>
 
-          <Avatar className={classes.avatar} src={avatar} alt="avatar"/>
+          <Avatar 
+          className={classes.avatar} 
+          src={avatar} 
+          alt="avatar"/>
           
-          <Typography color='inherit' variant="h4">Hi, I'm Segev</Typography>  
+          <Typography 
+          gutterBottom 
+          color='inherit' 
+          variant="h4">
+          Hi, I'm Segev
+          </Typography>  
           
-          <h1><strong>A Full Stack Developer</strong></h1>
+          <Typography
+          noWrap 
+          gutterBottom 
+          color='inherit' 
+          variant="h3">
+          A Full Stack Developer
+          </Typography>  
 
           <hr variant='middle' className={classes.bannerHr} />
 
-          <Typography style={{margin: 5}} color='inherit' variant="h6"> 
+          <Typography gutterBottom color='inherit' variant="h6"> 
             HTML & CSS | Bootstrap | JavaScript | React | NodeJS | Express | MongoDB 
           </Typography>
 
           <div className={classes.socialLinks}>
            {
-             landingPageIcons.map(x => {
+             landingPageIcons.map(dataIcon => {
              return (
-              <Tooltip key={x.title} TransitionComponent={Fade} disableFocusListener={true}  title={x.title}>
-                <IconButton style={{fontSize:50}} color='inherit' target='blank' href={x.link} className={x.icon}/>
+              <Tooltip 
+              key={dataIcon.title} 
+              TransitionComponent={Fade} 
+              disableFocusListener={true}  
+              title={dataIcon.title}
+              >
+                <IconButton
+                style={{fontSize:50,marginRight: 25}} 
+                color='inherit'
+                target='blank' 
+                href={dataIcon.link}
+                className={dataIcon.icon}/>
               </Tooltip> 
              );
            })}
