@@ -1,0 +1,10 @@
+{
+  "eslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true,
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.alwaysShowStatus": true
+}
