@@ -1,5 +1,5 @@
 /*eslint no-dupe-keys: 0*/
-import React, { Component, Fragment, PureComponent } from "react";
+import React, { Fragment, PureComponent } from "react";
 import { projectsData, categoryEnum } from "../store";
 
 import {
@@ -75,9 +75,13 @@ class Projects extends PureComponent {
       return projectSpecificData.filter(
         x => x.category === categoryEnum.DOTNET
       );
-    } else {
+    } else if (value === 3) {
       return projectSpecificData.filter(
         x => x.category === categoryEnum.NODEJS
+      );
+    } else if (value === 4) {
+      return projectSpecificData.filter(
+        x => x.category === categoryEnum.MACHINELEARNING
       );
     }
   };
@@ -102,6 +106,7 @@ class Projects extends PureComponent {
                 <Tab label="JavaScript" />
                 <Tab label=".NET" />
                 <Tab label="NodeJS" />
+                <Tab label="Machine Learning" />
               </Tabs>
             </AppBar>
 

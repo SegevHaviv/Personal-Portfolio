@@ -1,6 +1,6 @@
 /*eslint no-dupe-keys: 0*/
 
-import React, { Component, Fragment } from "react";
+import React, { Fragment, PureComponent } from "react";
 import avatar from "../assets/images/avatarImg.png";
 import {
   Typography,
@@ -53,7 +53,7 @@ const styles = {
   }
 };
 
-class LandingPage extends Component {
+class LandingPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (

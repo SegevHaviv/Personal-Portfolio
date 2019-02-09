@@ -1,5 +1,5 @@
 /* eslint-disable no-dupe-keys */
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import {
   withStyles,
   Grid,
@@ -18,7 +18,6 @@ const styles = {
     width: "100%",
     height: "100%",
     margin: "auto",
-    paddingTop: "2vh",
     justifyContent: "center",
     background: "#085078" /* fallback for old browsers */,
     background:
@@ -35,6 +34,8 @@ const styles = {
     color: "black",
     background: "white",
     border: "2px solid grey",
+    marginTop: 20,
+    marginBottom: 30,
     margin: "auto"
   },
   avatar: {
@@ -45,10 +46,14 @@ const styles = {
   descrpitionText: {
     marginTop: 35,
     fontFamily: "Oxygen"
+  },
+  contactDetails: {
+    fontFamily: "Oxygen"
+    // fontWeight: "bold"
   }
 };
 
-class Contact extends Component {
+class Contact extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
@@ -96,13 +101,10 @@ class Contact extends Component {
 
               <List style={{ marginLeft: 25, marginTop: 30 }}>
                 <ListItem>
-                  <Typography
-                    variant="h4"
-                    style={{ fontFamily: "Anton", fontWeight: "bold" }}
-                  >
+                  <Typography variant="h4" className={classes.contactDetails}>
                     <i
-                      style={{ margin: 25, marginRight: 50 }}
-                      class="fa fa-phone-square"
+                      style={{ margin: 25, marginRight: 40 }}
+                      className="fa fa-phone-square"
                       aria-hidden="true"
                     />
                     +972-527363711
@@ -112,11 +114,12 @@ class Contact extends Component {
                 <ListItem>
                   <Typography
                     variant="h4"
-                    style={{ fontFamily: "Anton", fontWeight: "bold" }}
+                    className={classes.contactDetails}
+                    inline={true}
                   >
                     <i
-                      style={{ margin: 25, marginRight: 50 }}
-                      class="fa fa-envelope"
+                      style={{ margin: 25, marginRight: 40 }}
+                      className="fa fa-envelope"
                       aria-hidden="true"
                     />
                     segevhaviv@gmail.com
@@ -124,13 +127,10 @@ class Contact extends Component {
                 </ListItem>
 
                 <ListItem>
-                  <Typography
-                    variant="h4"
-                    style={{ fontFamily: "Anton", fontWeight: "bold" }}
-                  >
+                  <Typography variant="h4" className={classes.contactDetails}>
                     <i
-                      style={{ margin: 25, marginRight: 50 }}
-                      class="fa fa-home"
+                      style={{ margin: 25, marginRight: 40 }}
+                      className="fa fa-home"
                       aria-hidden="true"
                     />
                     Holon, Israel

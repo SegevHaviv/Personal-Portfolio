@@ -25,7 +25,8 @@ export var categoryEnum = {
   REACT: "React",
   DOTNET: ".NET",
   JAVASCRIPT: "JavaScript",
-  NODEJS: "NodeJS"
+  NODEJS: "NodeJS",
+  MACHINELEARNING: "Machine Learning"
 };
 
 export const projectsData = [
@@ -65,6 +66,24 @@ export const projectsData = [
     codePenLink: "",
     liveDemo: "",
     category: categoryEnum.DOTNET
+  },
+  {
+    title: "Traveler",
+    description: "",
+    avatar: "",
+    gitHubLink: "https://github.com/SegevHaviv/Traveler",
+    codePenLink: "",
+    liveDemo: "",
+    category: categoryEnum.DOTNET
+  },
+  {
+    title: "Check",
+    description: "",
+    avatar: "",
+    gitHubLink: "https://github.com/SegevHaviv/Traveler",
+    codePenLink: "",
+    liveDemo: "",
+    category: categoryEnum.MACHINELEARNING
   },
   {
     title: "Art Store",
