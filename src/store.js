@@ -11,7 +11,7 @@ export const landingPageIcons = [
   },
   {
     title: "freeCodeCamp",
-    link: "https://www.freeCodeCamp.org",
+    link: "https://www.freecodecamp.org/segev_haviv",
     icon: "fab fa-free-code-camp"
   },
   {
@@ -21,77 +21,91 @@ export const landingPageIcons = [
   }
 ];
 
-export var categoryEnum = {
+export const categoryEnum = {
   REACT: "React",
-  DOTNET: ".NET",
-  JAVASCRIPT: "JavaScript",
-  NODEJS: "NodeJS",
+  JAVA: "Java",
+  // JAVASCRIPT: "JavaScript",
+  // NODEJS: "NodeJS",
   MACHINELEARNING: "Machine Learning"
 };
 
 export const projectsData = [
   {
     title: "Random Quote Machine",
-    description: "",
+    description:
+      "Randomly picking a quote upon clicking a button, developed with React and Bootstrap mainly.",
     avatar: require("./assets/images/random-quote-machine.png"),
-    gitHubLink: "",
+    gitHubLink: "https://github.com/SegevHaviv/Quote-Machine",
     codePenLink: "",
     liveDemo: "",
     category: categoryEnum.REACT
   },
   {
     title: "Calculator",
-    description: "",
+    description: "Simple React calculator",
     avatar: require("./assets/images/calculator.png"),
-    gitHubLink: "",
+    gitHubLink: "https://github.com/SegevHaviv/Calculator-ReactJS",
     codePenLink: "",
-    liveDemo: "",
+    liveDemo: "https://segevhaviv.github.io/Calculator-ReactJS/",
     category: categoryEnum.REACT
   },
   {
     title: "Portfolio",
-    description: "",
+    description:
+      "My personal portfolio, developed with React and Material UI technologies.",
     avatar: require("./assets/images/portfolio.png"),
     gitHubLink: "https://github.com/SegevHaviv/portfolio",
     codePenLink: "",
     liveDemo: "",
     category: categoryEnum.REACT
   },
-
+  
   {
-    title: "Traveler",
-    description: "",
-    avatar: "",
-    gitHubLink: "https://github.com/SegevHaviv/Traveler",
-    codePenLink: "",
-    liveDemo: "",
-    category: categoryEnum.DOTNET
-  },
-  {
-    title: "Traveler",
-    description: "",
-    avatar: "",
-    gitHubLink: "https://github.com/SegevHaviv/Traveler",
-    codePenLink: "",
-    liveDemo: "",
-    category: categoryEnum.DOTNET
-  },
-  {
-    title: "Check",
-    description: "",
-    avatar: "",
-    gitHubLink: "https://github.com/SegevHaviv/Traveler",
+    title: "Image Proccessing",
+    description: "Auto coloring of black and white pictures.",
+    avatar: require("./assets/images/autoColor.png"),
+    gitHubLink: "https://github.com/SegevHaviv/Image-Proccessing-Project",
     codePenLink: "",
     liveDemo: "",
     category: categoryEnum.MACHINELEARNING
   },
   {
-    title: "Art Store",
-    description: "",
-    avatar: "",
-    gitHubLink: "https://github.com/SegevHaviv/Art-Store",
+    title: "Sentiment Analysis",
+    description:
+      "",
+    avatar: require("./assets/images/nltk.png"),
+    gitHubLink: "https://github.com/SegevHaviv/NLTK-Sentiment-Analysis",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.DOTNET
-  }
+    category: categoryEnum.MACHINELEARNING
+  },
+  {
+    title: "Sokoban",
+    description:
+      "Sokoban game using Client-Server TCP/IP protocol. The entire project is event-driven development on MVC architecture. All the projects are according to the acceptable design patterns and OOP principles. ",
+    avatar: "",
+    gitHubLink: "https://github.com/SegevHaviv/Sokoban-Game",
+    codePenLink: "",
+    liveDemo: "",
+    category: categoryEnum.JAVA
+  },
+  {
+    title: "Lazy (Android)",
+    description:"",
+    avatar: "",
+    gitHubLink: "https://github.com/SegevHaviv/Lazy",
+    codePenLink: "",
+    liveDemo: "",
+    category: categoryEnum.JAVA
+  },
+  {
+    title: "Traveler (Android)",
+    description:
+      "",
+    avatar: "",
+    gitHubLink: "https://github.com/SegevHaviv/Traveler",
+    codePenLink: "",
+    liveDemo: "",
+    category: categoryEnum.JAVA
+  },
 ];

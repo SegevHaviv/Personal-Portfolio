@@ -1,10 +1,8 @@
-/*eslint no-dupe-keys: 0*/
 import React, { Fragment, PureComponent } from "react";
 import { projectsData, categoryEnum } from "../store";
 
 import {
   AppBar,
-  CssBaseline,
   Tabs,
   Tab,
   withStyles,
@@ -15,22 +13,16 @@ import {
   Button,
   Grid,
   Fade,
-  Divider
+  Divider,
 } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
-    position: "fixed",
-    width: "100%",
-    height: "100%",
-    background: "#085078" /* fallback for old browsers */,
-    background:
-      "-webkit-linear-gradient(to right, #85D8CE, #085078)" /* Chrome 10-25, Safari 5.1-6 */,
-    background:
-      "linear-gradient(to right, #85D8CE, #085078)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
-    overflowX: "scroll"
+    overflowX: "hidden",
+    width:"100%",
+    height:"100%"
   },
-
+  toolbar: theme.mixins.toolbar,
   card: {
     maxWidth: 300
   },
@@ -40,8 +32,6 @@ const styles = theme => ({
     textAlign: "center",
     justifyContent: "center"
   },
-
-  description: {},
 
   cardButton: {
     fontWeight: "bold",
@@ -55,7 +45,7 @@ class Projects extends PureComponent {
     super(props);
 
     this.state = {
-      value: 0
+      value: categoryEnum.REACT // Initial Category.
     };
   }
 
@@ -63,52 +53,25 @@ class Projects extends PureComponent {
     this.setState({ value });
   };
 
-  getSpecificProjectsData = (value, projectsData) => {
-    const projectSpecificData = projectsData;
-    if (value === 0) {
-      return projectSpecificData.filter(x => x.category === categoryEnum.REACT);
-    } else if (value === 1) {
-      return projectSpecificData.filter(
-        x => x.category === categoryEnum.JAVASCRIPT
-      );
-    } else if (value === 2) {
-      return projectSpecificData.filter(
-        x => x.category === categoryEnum.DOTNET
-      );
-    } else if (value === 3) {
-      return projectSpecificData.filter(
-        x => x.category === categoryEnum.NODEJS
-      );
-    } else if (value === 4) {
-      return projectSpecificData.filter(
-        x => x.category === categoryEnum.MACHINELEARNING
-      );
-    }
-  };
-
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    const specificData = this.getSpecificProjectsData(value, projectsData);
+    const specificData = projectsData.filter(x => x.category === value);
 
     return (
       <Fragment>
-        <CssBaseline />
+        
         <Fade in timeout={1500}>
           <div className={classes.root}>
             <AppBar
-              position="static"
-              color="inherit"
-              className={classes.appBar}
+              style={{background:"none",top: 'auto'}}
             >
               <Tabs centered value={value} onChange={this.handleChange}>
-                <Tab label="React" />
-                <Tab label="JavaScript" />
-                <Tab label=".NET" />
-                <Tab label="NodeJS" />
-                <Tab label="Machine Learning" />
+                {Object.entries(categoryEnum).map(([key, value]) => <Tab key={key} label={key} value={value}/>)}
               </Tabs>
             </AppBar>
+            <div className={classes.toolbar} />
+
 
             <div
               style={{
@@ -119,43 +82,38 @@ class Projects extends PureComponent {
               }}
             >
               <Grid container spacing={24} justify="center" alignItems="center">
-                <Fragment>
-                  {specificData.map(project => {
-                    return (
-                      <Grid item xs={4} key={project.title}>
-                        <Card className={classes.card}>
-                          <CardMedia
-                            className={classes.media}
-                            image={project.avatar}
-                            title={project.title}
-                          />
-                          <CardContent className={classes.media}>
-                            <Typography
-                              gutterBottom
-                              align="center"
-                              variant="h5"
-                              component="h2"
-                            >
-                              {project.title}
-                            </Typography>
-                            {/* Problem : Text may overflow. */}
-                            <Typography
-                              align="center"
-                              className={classes.description}
-                              component="p"
-                            >
-                              {project.description}
-                            </Typography>
-                          </CardContent>
+                {specificData.map(project => {
+                  return (
+                    <Grid item xs={4} key={project.title} style={{minWidth: 300}}>
+                      <Card className={classes.card}>
+                        <CardMedia
+                          className={classes.media}
+                          image={project.avatar}
+                          title={project.title}
+                        />
+                        <CardContent className={classes.media}>
+                          <Typography gutterBottom align="center" variant="h5">
+                            {project.title}
+                          </Typography>
 
-                          <Divider />
+                          <Typography
+                            align="center"
+                            className={classes.description}
+                            component="p"
+                          >
+                            {project.description}
+                          </Typography>
+                        </CardContent>
 
+                        <Divider />
+                        <div style={{ textAlign: "center" }}>
                           <Button
+                            variant="text"
                             className={classes.cardButton}
                             color="primary"
                             target="_blank"
-                            href={project.gitHubLink}
-                            disabled={project.gitHubLink ? false : true}
+                            href={project.gitHubLink}                      
+                            style={{display : project.gitHubLink ? "inline" : "none"}}
                           >
                             GitHub
                           </Button>
@@ -165,7 +123,7 @@ class Projects extends PureComponent {
                             color="primary"
                             target="_blank"
                             href={project.codePenLink}
-                            disabled={project.codePenLink ? false : true}
+                            style={{display : project.codePenLink ? "inline" : "none"}}
                           >
                             CodePen
                           </Button>
@@ -173,17 +131,18 @@ class Projects extends PureComponent {
                           <Button
                             className={classes.cardButton}
                             color="primary"
-                            target="_blank"
+                            target="_blank"                     
                             href={project.liveDemo}
-                            disabled={project.liveDemo ? false : true}
+                            style={{display : project.liveDemo ? "inline" : "none"}}
+
                           >
                             LiveDemo
                           </Button>
-                        </Card>
-                      </Grid>
-                    );
-                  })}
-                </Fragment>
+                        </div>
+                      </Card>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </div>
           </div>

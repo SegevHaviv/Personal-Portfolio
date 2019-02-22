@@ -1,82 +1,79 @@
-/* eslint-disable no-dupe-keys */
-import React, { Component, Fragment } from "react";
+import React, { useState,Suspense,lazy, Section } from "react";
 import PropTypes from "prop-types";
 import { withStyles, CssBaseline } from "@material-ui/core";
+import background_image from "./assets/images/backgroundimage.jpg";
 
-import "./App.css";
+const NavBar = lazy(() => import("./components/NavBar.js"));
+const Contact = lazy(() => import("./components/Contact"));
+const Projects = lazy(() => import("./components/Projects"));
+const Resume = lazy(() => import("./components/Resume"));
+const LandingPage = lazy(() => import("./components/LandingPage"));
 
-import NavBar from "./components/NavBar.js";
-import Contact from "./components/Contact";
-import Projects from "./components/Projects";
-import Resume from "./components/Resume";
-import LandingPage from "./components/LandingPage";
+// import NavBar from "./components/NavBar.js";
+// import Contact from "./components/Contact";
+// import Projects from "./components/Projects";
+// import Resume from "./components/Resume";
+// import LandingPage from "./components/LandingPage";
+// import background_image from "./assets/images/backgroundimage.jpg";
 
-const styles = {
-  container: {
-    background: "#085078" /* fallback for old browsers */,
-    background:
-      "-webkit-linear-gradient(to right, #85D8CE, #085078)" /* Chrome 10-25, Safari 5.1-6 */,
-    background:
-      "linear-gradient(to right, #85D8CE, #085078)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
-};
+const styles = theme => ({
+  root: {
+    position:"fixed",
+    width:"100%",
+    height:"100%",
+    background: `url(${background_image})`,
+    backgroundSize: "100% 100%",
+  },
+  toolbar: theme.mixins.toolbar,
+});
 
-class App extends Component {
-  constructor(props) {
-    const titleIndex = 3;
-    super(props);
-    this.state = {
-      value: titleIndex
-    };
-  }
+function App(props) {
+  const [navBarIndex,setnavBarIndex] = useState(0);
+  const { classes } = props;
 
-  handleCategorySelected = index => {
-    this.setState({
-      value: index
-    });
+
+  function handleCategorySelected(index) {
+    setnavBarIndex(index);
   };
 
-  handleTitleSelected = () => {
-    this.setState({
-      value: this.titleIndex
-    });
+  function handleTitleSelected(){
+    setnavBarIndex(0);
   };
 
-  toggleSelectedTab = tabValue => {
-    switch (tabValue) {
+  function toggleSelectedTab(navBarIndex) {
+    switch (navBarIndex) {
       case 0:
-        return <Projects />;
-      case 1:
-        return <Resume />;
-      case 2:
-        return <Contact />;
-      case 3:
         return <LandingPage />;
+      case 1:
+        return <Projects />;
+      case 2:
+        return <Resume />;
+      case 3:
+        return <Contact />;
       default:
         return <LandingPage />;
     }
   };
 
-  render() {
-    const { classes } = this.props;
-    const tabValue = this.state.value;
-
     return (
-      <Fragment>
-        <CssBaseline />
-        <div className={classes.container}>
-          <NavBar
-            tabValue={tabValue}
-            onSelect={this.handleCategorySelected}
-            onTitleSelected={this.handleTitleSelected}
-          />
+      <div className = {classes.root}>
+        <CssBaseline/>
+        <Suspense fallback={<div>Loading NavBar...</div>}>
+        <NavBar
+          onSelect={handleCategorySelected}
+          onTitleSelected={() => handleTitleSelected(0)}
+        />
+        </Suspense>
 
-          {this.toggleSelectedTab(tabValue)}
-        </div>
-      </Fragment>
+        <div className={classes.toolbar} />
+        <Suspense fallback={<div>Loading Content...</div>}>
+
+          {toggleSelectedTab(navBarIndex)}
+          </Suspense>
+
+      </div>
     );
   }
-}
 
 App.propTypes = {
   classes: PropTypes.object.isRequired

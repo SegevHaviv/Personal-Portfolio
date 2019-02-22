@@ -1,86 +1,68 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import React,{Fragment} from 'react';
+import PropTypes from 'prop-types';
+
+
+import { Toolbar , List , ListItem , IconButton , ListItemIcon , Drawer, withStyles, Typography } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
+import HomeIcon from '@material-ui/icons/Home';
+import ProjectIcon from '@material-ui/icons/Work';
+import ResumeIcon from '@material-ui/icons/Description';
+import MailIcon from '@material-ui/icons/Mail';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    display: "flex"
-  },
+  root: {},
   appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
+    transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
+    transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   hide: {
-    display: "none"
+    display: 'none',
   },
   drawer: {
-    width: drawerWidth,
-    flexShrink: 0
+    background: "black",
+    flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    background: "#0a0b0c",
+    color: "white",
   },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    padding: "0 8px",
-    ...theme.mixins.toolbar,
-    justifyContent: "flex-end"
-  },
+ 
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create("margin", {
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
   },
   contentShift: {
-    transition: theme.transitions.create("margin", {
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0
-  }
+    marginLeft: 0,
+  },
 });
 
 class PersistentDrawerLeft extends React.Component {
   state = {
-    open: false
+    open: false,
   };
 
   handleDrawerOpen = () => {
@@ -91,47 +73,53 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ open: false });
   };
 
+  handleSelectedDrawerTab = (index) => {
+    this.handleDrawerClose();
+    this.props.onSelectedDrawerTab(index);
+  }
+
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     const { open } = this.state;
 
     return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open
-          })}
-        >
-          <Toolbar disableGutters={!open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
-            >
+      <Fragment>
+          <Toolbar>
+            <IconButton color="inherit" aria-label="Open drawer" onClick={this.handleDrawerOpen}>
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Persistent drawer
-            </Typography>
           </Toolbar>
-        </AppBar>
-
-        <main
-          className={classNames(classes.content, {
-            [classes.contentShift]: open
-          })}
-        />
-      </div>
+        <Drawer className={classes.drawer} variant="persistent" anchor="right" open={open}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <div >
+            <IconButton onClick={this.handleDrawerClose}   style={{color:"white"}} >
+              { <ChevronRightIcon />}
+            </IconButton>
+          </div>
+          <List   style={{color:"white"}} > 
+            {['Home', 'Projects', 'Resume','Contact'].map((text, index) => (
+              <ListItem button key={text} onClick={()=>this.handleSelectedDrawerTab(index)}   style={{color:"white",marginTop:30,fontSize:20}} > 
+                    <ListItemIcon   style={{color:"white",fontSize:20}} >
+                    {
+                        index === 0 ? <HomeIcon /> : index === 1 ? <ProjectIcon/> : index === 2 ? <ResumeIcon/> : <MailIcon />
+                    }
+                    </ListItemIcon>
+                <Typography variant="subtitle1" style={{color:"white"}}>{text}</Typography>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+      </Fragment>
     );
   }
 }
 
 PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

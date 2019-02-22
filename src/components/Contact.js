@@ -1,5 +1,5 @@
-/* eslint-disable no-dupe-keys */
 import React, { PureComponent } from "react";
+
 import {
   withStyles,
   Grid,
@@ -13,29 +13,15 @@ import {
 import avatar from "../assets/images/avatarImg.png";
 
 const styles = {
-  root: {
-    position: "fixed",
-    width: "100%",
-    height: "100%",
-    margin: "auto",
-    justifyContent: "center",
-    background: "#085078" /* fallback for old browsers */,
-    background:
-      "-webkit-linear-gradient(to right, #85D8CE, #085078)" /* Chrome 10-25, Safari 5.1-6 */,
-    background:
-      "linear-gradient(to right, #85D8CE, #085078)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  root: {  
+    marginTop:15  
   },
   contactGrid: {
     background: "white",
     textAlign: "center",
-    justifyContent: "center",
     width: "80%",
     height: "85%",
-    color: "black",
-    background: "white",
     border: "2px solid grey",
-    marginTop: 20,
-    marginBottom: 30,
     margin: "auto"
   },
   avatar: {
@@ -49,7 +35,6 @@ const styles = {
   },
   contactDetails: {
     fontFamily: "Oxygen"
-    // fontWeight: "bold"
   }
 };
 
@@ -63,7 +48,6 @@ class Contact extends PureComponent {
             <Grid
               item
               xs={6}
-              style={{ justifyContent: "center", marginTop: 25 }}
             >
               <Typography
                 gutterBottom
@@ -80,11 +64,9 @@ class Contact extends PureComponent {
                 variant="h6"
                 className={classes.descrpitionText}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer more recently
-                with desktop publishing software like Aldus PageMaker including
-                versions of Lorem Ipsum.
+                Junior full stack developer with great passion for code,
+                especially for web technologies, autodidact with high
+                motivitaion to learn and get my hands dirty.
               </Typography>
             </Grid>
 
@@ -131,7 +113,6 @@ class Contact extends PureComponent {
                     <i
                       style={{ margin: 25, marginRight: 40 }}
                       className="fa fa-home"
-                      aria-hidden="true"
                     />
                     Holon, Israel
                   </Typography>
