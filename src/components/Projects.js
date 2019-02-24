@@ -1,28 +1,15 @@
-import React, { Fragment, PureComponent } from "react";
+/* eslint-disable no-dupe-keys */
+import React, { Fragment,useState } from "react";
 import { projectsData, categoryEnum } from "../store";
+import { Tabs, Tab, withStyles , Typography , Card , CardMedia , CardContent , Button , Grid,
+        Fade,  Divider } from "@material-ui/core";
 
-import {
-  AppBar,
-  Tabs,
-  Tab,
-  withStyles,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-  Button,
-  Grid,
-  Fade,
-  Divider,
-} from "@material-ui/core";
 
 const styles = theme => ({
   root: {
     overflowX: "hidden",
-    width:"100%",
     height:"100%"
   },
-  toolbar: theme.mixins.toolbar,
   card: {
     maxWidth: 300
   },
@@ -34,121 +21,119 @@ const styles = theme => ({
   },
 
   cardButton: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
+    fontFamily: "Oxygen",
+    textTransform: "capitalize",
     flexGrow: 1
+  },
+  tabsNavigator:{
+    color:"white",
+    [theme.breakpoints.down('xs')] : {
+      position:'absolute',
+      bottom: 0,
+      right:0,
+      left:0,
+      background: "#232526",  /* fallback for old browsers */
+      background: "-webkit-linear-gradient(to right, #414345, #232526)",  /* Chrome 10-25, Safari 5.1-6 */
+      background: "linear-gradient(to top, #000000, #232526)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+    },
   }
 });
 
-class Projects extends PureComponent {
-  constructor(props) {
-    super(props);
+function Projects(props){
+  const [value,setValue] = useState(categoryEnum.REACT);
+  const { classes } = props;
+  const specificData = projectsData.filter(x => x.category === value);
 
-    this.state = {
-      value: categoryEnum.REACT // Initial Category.
-    };
-  }
-
-  handleChange = (event, value) => {
-    this.setState({ value });
+  function handleChange(event, value){
+    setValue(value);
   };
 
-  render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-    const specificData = projectsData.filter(x => x.category === value);
+  return (
+    <Fragment>
+      <Fade in timeout={750}>
+        <div className={classes.root}>
 
-    return (
-      <Fragment>
-        
-        <Fade in timeout={1500}>
-          <div className={classes.root}>
-            <AppBar
-              style={{background:"none",top: 'auto'}}
+          {/* Mapping the categories to tabs */}
+            <Tabs 
+            centered 
+            value={value} 
+            className={classes.tabsNavigator}
+            onChange={handleChange}
             >
-              <Tabs centered value={value} onChange={this.handleChange}>
-                {Object.entries(categoryEnum).map(([key, value]) => <Tab key={key} label={key} value={value}/>)}
-              </Tabs>
-            </AppBar>
-            <div className={classes.toolbar} />
 
+              {
+              Object.entries(categoryEnum).map(([key, value]) => 
+              <Tab key={key} label={value} value={value} 
+              style={{textTransform:'capitalize',fontSize:"1em"}}/>)
+              }
 
-            <div
-              style={{
-                width: "80%",
-                margin: "auto",
-                marginTop: 30,
-                marginBottom: 80
-              }}
-            >
-              <Grid container spacing={24} justify="center" alignItems="center">
-                {specificData.map(project => {
-                  return (
-                    <Grid item xs={4} key={project.title} style={{minWidth: 300}}>
-                      <Card className={classes.card}>
-                        <CardMedia
-                          className={classes.media}
-                          image={project.avatar}
-                          title={project.title}
+            </Tabs>
+
+          <div style={{ width: "80%", margin: "auto", }}>
+          
+            <Grid container spacing={24} justify="center" alignItems="center">
+              {specificData.map(project => {
+                return (
+                  <Grid item xs={4} key={project.title} style={{minWidth: 300}}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.media}
+                        image={project.avatar}
+                        title={project.title}
+                      />
+                      <CardContent className={classes.media}>
+                        <Typography gutterBottom align="center" variant="h5">
+                          {project.title}
+                        </Typography>
+
+                        <Typography
+                          align="center"
+                          className={classes.description}
+                        >
+                          {project.description}
+                        </Typography>
+                      </CardContent>
+
+                      <Divider />
+                      <div style={{ textAlign: "center" }}>
+                        <Button
+                          variant="text"
+                          className={classes.cardButton}
+                          color="primary"
+                          target="_blank"
+                          href={project.gitHubLink}                      
+                          style={{display : project.gitHubLink ? "inline" : "none"}}
+                          children="GitHub"
                         />
-                        <CardContent className={classes.media}>
-                          <Typography gutterBottom align="center" variant="h5">
-                            {project.title}
-                          </Typography>
 
-                          <Typography
-                            align="center"
-                            className={classes.description}
-                            component="p"
-                          >
-                            {project.description}
-                          </Typography>
-                        </CardContent>
-
-                        <Divider />
-                        <div style={{ textAlign: "center" }}>
-                          <Button
-                            variant="text"
-                            className={classes.cardButton}
-                            color="primary"
-                            target="_blank"
-                            href={project.gitHubLink}                      
-                            style={{display : project.gitHubLink ? "inline" : "none"}}
-                          >
-                            GitHub
-                          </Button>
-
-                          <Button
-                            className={classes.cardButton}
-                            color="primary"
-                            target="_blank"
-                            href={project.codePenLink}
-                            style={{display : project.codePenLink ? "inline" : "none"}}
-                          >
-                            CodePen
-                          </Button>
-
-                          <Button
-                            className={classes.cardButton}
-                            color="primary"
-                            target="_blank"                     
-                            href={project.liveDemo}
-                            style={{display : project.liveDemo ? "inline" : "none"}}
-
-                          >
-                            LiveDemo
-                          </Button>
-                        </div>
-                      </Card>
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </div>
+                        <Button
+                          className={classes.cardButton}
+                          color="primary"
+                          target="_blank"
+                          href={project.codePenLink}
+                          style={{display : project.codePenLink ? "inline" : "none"}}
+                          children="CodePen"
+                        />
+                          
+                        <Button
+                          className={classes.cardButton}
+                          color="primary"
+                          target="_blank"                     
+                          href={project.liveDemo}
+                          style={{display : project.liveDemo ? "inline" : "none"}}
+                          children="LiveDemo"
+                        />
+              
+                      </div>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
           </div>
-        </Fade>
-      </Fragment>
-    );
-  }
+        </div>
+      </Fade>
+    </Fragment>
+  );
 }
 export default withStyles(styles)(Projects);

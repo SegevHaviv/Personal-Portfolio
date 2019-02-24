@@ -1,28 +1,25 @@
-import React, { useState,Suspense,lazy, Section } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withStyles, CssBaseline } from "@material-ui/core";
+import { withStyles, CssBaseline,Fade } from "@material-ui/core";
 import background_image from "./assets/images/backgroundimage.jpg";
 
-const NavBar = lazy(() => import("./components/NavBar.js"));
-const Contact = lazy(() => import("./components/Contact"));
-const Projects = lazy(() => import("./components/Projects"));
-const Resume = lazy(() => import("./components/Resume"));
-const LandingPage = lazy(() => import("./components/LandingPage"));
-
-// import NavBar from "./components/NavBar.js";
-// import Contact from "./components/Contact";
-// import Projects from "./components/Projects";
-// import Resume from "./components/Resume";
-// import LandingPage from "./components/LandingPage";
-// import background_image from "./assets/images/backgroundimage.jpg";
+import NavBar from "./components/NavBar.js";
+import Contact from "./components/Contact";
+import Projects from "./components/Projects";
+import Resume from "./components/Resume";
+import LandingPage from "./components/LandingPage";
 
 const styles = theme => ({
+  '@global': {
+    'html,body,#root': {
+      height: '100%'
+    }
+  },
   root: {
-    position:"fixed",
     width:"100%",
     height:"100%",
     background: `url(${background_image})`,
-    backgroundSize: "100% 100%",
+    backgroundSize: "cover",
   },
   toolbar: theme.mixins.toolbar,
 });
@@ -58,18 +55,17 @@ function App(props) {
     return (
       <div className = {classes.root}>
         <CssBaseline/>
-        <Suspense fallback={<div>Loading NavBar...</div>}>
+
         <NavBar
-          onSelect={handleCategorySelected}
-          onTitleSelected={() => handleTitleSelected(0)}
+        onSelect={handleCategorySelected} index={navBarIndex}
+        onTitleSelected={() => handleTitleSelected(0)}
         />
-        </Suspense>
 
         <div className={classes.toolbar} />
-        <Suspense fallback={<div>Loading Content...</div>}>
-
-          {toggleSelectedTab(navBarIndex)}
-          </Suspense>
+   
+        <Fade in timeout={750}>
+        {toggleSelectedTab(navBarIndex)}
+        </Fade>
 
       </div>
     );

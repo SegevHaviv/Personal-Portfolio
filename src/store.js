@@ -24,8 +24,6 @@ export const landingPageIcons = [
 export const categoryEnum = {
   REACT: "React",
   JAVA: "Java",
-  // JAVASCRIPT: "JavaScript",
-  // NODEJS: "NodeJS",
   MACHINELEARNING: "Machine Learning"
 };
 
@@ -49,6 +47,8 @@ export const projectsData = [
     liveDemo: "https://segevhaviv.github.io/Calculator-ReactJS/",
     category: categoryEnum.REACT
   },
+ 
+  
   {
     title: "Portfolio",
     description:

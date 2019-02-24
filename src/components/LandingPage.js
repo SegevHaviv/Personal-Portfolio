@@ -1,46 +1,22 @@
 
-import React, { Fragment, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import avatar from "../assets/images/avatarImg.png";
-
-import {
-  createMuiTheme,
-  MuiThemeProvider,
-} from "@material-ui/core/styles";
-
-import {
-  Typography,
-  withStyles,
-  Tooltip,
-  Fade,
-  CssBaseline,
-  IconButton,
-  Avatar
-} from "@material-ui/core";
-
 import "../App.css";
 import { landingPageIcons } from "../store";
+import {Typography, withStyles, Tooltip, Fade, CssBaseline, IconButton, Avatar} from "@material-ui/core";
 
-const theme = createMuiTheme({
-  overrides: {
-    MuiTooltip: {
-      tooltip: {
-        backgroundColor: "black",
-        fontSize:"0.7em"
-      }
-    }
-  }
-});
-
-const styles = ({
+const styles = theme => ({
   root: {
     textAlign: "center",
-  },
-
-  banner: {
-    textAlign: "center",
-    color: "white",
+    margin: "auto",
+    color:"white",
     width: "55%",
-    margin: "5vh auto auto auto",
+    [theme.breakpoints.down('xs')]:{
+      marginTop: theme.spacing.unit * 3,
+    },
+    [theme.breakpoints.up('sm')]:{
+      marginTop: theme.spacing.unit * 13,
+    }
   },
   bannerHr: {
     color: "white"
@@ -48,11 +24,21 @@ const styles = ({
   avatar: {
     width: "25%",
     height: "100%",
+    fontSize: "100",
     margin: "auto"
   },
   bannerText: {
     color:"inherit",
     fontFamily:"Oxygen",
+  },
+  name: {
+
+  },
+  title: {
+
+  },
+  skills: {
+
   }
 });
 
@@ -60,54 +46,42 @@ class LandingPage extends PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <Fragment>
-        <CssBaseline />
-        <div className={classes.root}>
-          <Fade in timeout={{ enter: 1500 }}>
-            <div className={classes.banner}>
-              <Avatar className={classes.avatar} src={avatar} alt="avatar" />
+          <Fade in timeout={750}>
+            <div className={classes.root}>
+              <CssBaseline />
+              <Avatar className={classes.avatar} src={avatar} alt="avatar"/>
 
-              <Typography className={classes.bannerText} gutterBottom variant="h4">
+              <Typography className={`${classes.bannerText} ${classes.name}`} gutterBottom variant="h4">
                 Hi, I'm Segev
               </Typography>
 
-              <Typography className={classes.bannerText} gutterBottom variant="h3">
+              <Typography className={`${classes.bannerText} ${classes.title}`} gutterBottom variant="h3">
                 A Full Stack Developer
               </Typography>
 
               <hr variant="middle" className={classes.bannerHr} />
 
-              <Typography className={classes.bannerText}gutterBottom variant="h6">
-                HTML & CSS | Bootstrap | JavaScript | React | NodeJS | Express |
-                MongoDB
+              <Typography className={`${classes.bannerText} ${classes.title}`} gutterBottom variant="h6">
+                HTML & CSS | Bootstrap | JavaScript | React | NodeJS | Express | MongoDB
               </Typography>
 
-              <div>
-                {landingPageIcons.map(dataIcon => {
+                {
+                  landingPageIcons.map(dataIcon => {
                   return (
-                    <MuiThemeProvider theme={theme}>
-                    <Tooltip
-                      key={dataIcon.title}
-                      TransitionComponent={Fade}
-                      disableFocusListener={true}
-                      title={dataIcon.title}
-                    > 
+                      <Tooltip  key={dataIcon.title}  TransitionComponent={Fade}
+                      disableFocusListener={true}  title={dataIcon.title}
+                      > 
+
                       <IconButton
-                        style={{ fontSize: 50, marginRight: 25 }}
-                        color="inherit"
-                        target="blank"
-                        href={dataIcon.link}
-                        className={dataIcon.icon}
+                        style={{ fontSize: 50, marginRight: 25 }} key={dataIcon.link}
+                        color="inherit" target="blank"
+                        href={dataIcon.link} className={dataIcon.icon}
                       />
                      </Tooltip>
-                     </MuiThemeProvider>
                   );
                 })}
-              </div>
-            </div>
-          </Fade>
-        </div>
-      </Fragment>
+           </div>
+        </Fade>
     );
   }
 }

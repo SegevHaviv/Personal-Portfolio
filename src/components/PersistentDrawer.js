@@ -5,16 +5,17 @@ import PropTypes from 'prop-types';
 import { Toolbar , List , ListItem , IconButton , ListItemIcon , Drawer, withStyles, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import HomeIcon from '@material-ui/icons/Home';
 import ProjectIcon from '@material-ui/icons/Work';
 import ResumeIcon from '@material-ui/icons/Description';
 import MailIcon from '@material-ui/icons/Mail';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const styles = theme => ({
-  root: {},
+  root: {
+  },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -33,9 +34,9 @@ const styles = theme => ({
     display: 'none',
   },
   drawer: {
-    background: "black",
     flexShrink: 0,
   },
+
   drawerPaper: {
     width: drawerWidth,
     background: "#0a0b0c",
@@ -89,7 +90,10 @@ class PersistentDrawerLeft extends React.Component {
               <MenuIcon />
             </IconButton>
           </Toolbar>
+
+          <ClickAwayListener onClickAway={this.handleDrawerClose}>
         <Drawer className={classes.drawer} variant="persistent" anchor="right" open={open}
+        
           classes={{
             paper: classes.drawerPaper,
           }}
@@ -99,19 +103,28 @@ class PersistentDrawerLeft extends React.Component {
               { <ChevronRightIcon />}
             </IconButton>
           </div>
-          <List   style={{color:"white"}} > 
-            {['Home', 'Projects', 'Resume','Contact'].map((text, index) => (
-              <ListItem button key={text} onClick={()=>this.handleSelectedDrawerTab(index)}   style={{color:"white",marginTop:30,fontSize:20}} > 
+
+          <List style={{marginTop:50}}> 
+            {['Home Page', 'My Work', 'Resume','Contact'].map((text, index) => (
+              <ListItem 
+               button key={text}
+               onClick={()=>this.handleSelectedDrawerTab(index)}
+               style={{color:"white",marginTop:20,fontSize:20,opacity: this.props.index === index? 1 : 0.5}} > 
                     <ListItemIcon   style={{color:"white",fontSize:20}} >
                     {
-                        index === 0 ? <HomeIcon /> : index === 1 ? <ProjectIcon/> : index === 2 ? <ResumeIcon/> : <MailIcon />
+                        index === 0 ? <HomeIcon /> 
+                        : index === 1 ? <ProjectIcon/> 
+                        : index === 2 ? <ResumeIcon/> 
+                        : <MailIcon />
                     }
                     </ListItemIcon>
                 <Typography variant="subtitle1" style={{color:"white"}}>{text}</Typography>
-              </ListItem>
+              </ListItem>              
             ))}
+            
           </List>
         </Drawer>
+        </ClickAwayListener>
       </Fragment>
     );
   }

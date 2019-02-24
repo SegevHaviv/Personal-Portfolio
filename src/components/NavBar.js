@@ -10,11 +10,9 @@ import {
   withStyles,
 } from "@material-ui/core/";
 
-const styles = {
+const styles = theme => ({
   root: {
-    position:"fixed",
     width: "100%",
-    height:100,
   },
   title: {
     textTransform: "capitalize",
@@ -23,7 +21,7 @@ const styles = {
     fontFamily: "Montserrat"
   },
   titleContainer: {
-    flexGrow: 1
+    marginRight: "auto",
   },
   appBar: {
     background: "#232526",  /* fallback for old browsers */
@@ -34,11 +32,12 @@ const styles = {
     color: "inherit",
     textDecoration: "none"
   },
-};
+});
 
 class NavBar extends Component {
   render() {
-    const { classes, onSelect, onTitleSelected } = this.props;
+
+    const { classes, onSelect, onTitleSelected,index } = this.props;
     return (
       <Fragment>
         <div className={classes.root}>
@@ -54,7 +53,7 @@ class NavBar extends Component {
 
               </div>
 
-              <PersistentDrawer onSelectedDrawerTab={onSelect}/>
+              <PersistentDrawer onSelectedDrawerTab={onSelect} index={index}/>
 
             </Toolbar>
           </AppBar>
