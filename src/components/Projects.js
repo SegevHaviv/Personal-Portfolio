@@ -69,7 +69,7 @@ function Projects(props){
 
             </Tabs>
 
-          <div style={{ width: "80%", margin: "auto", }}>
+          <div style={{ width: "80%", margin: "auto",marginTop:30 }}>
           
             <Grid container spacing={24} justify="center" alignItems="center">
               {specificData.map(project => {
