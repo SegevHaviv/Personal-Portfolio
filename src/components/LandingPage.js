@@ -15,7 +15,7 @@ const styles = theme => ({
       marginTop: theme.spacing.unit * 3,
     },
     [theme.breakpoints.up('sm')]:{
-      marginTop: theme.spacing.unit * 13,
+      marginTop: theme.spacing.unit * 8,
     }
   },
   bannerHr: {

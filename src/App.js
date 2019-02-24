@@ -16,6 +16,7 @@ const styles = theme => ({
     }
   },
   root: {
+    overflow:'hidden',
     width:"100%",
     height:"100%",
     background: `url(${background_image})`,
