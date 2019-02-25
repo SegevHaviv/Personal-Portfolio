@@ -83,7 +83,7 @@ export const projectsData = [
     title: "Sokoban",
     description:
       "Sokoban game using Client-Server TCP/IP protocol. The entire project is event-driven development on MVC architecture. All the projects are according to the acceptable design patterns and OOP principles. ",
-    avatar: "",
+    avatar: require("./assets/images/sokoban.png"),
     gitHubLink: "https://github.com/SegevHaviv/Sokoban-Game",
     codePenLink: "",
     liveDemo: "",
@@ -92,7 +92,7 @@ export const projectsData = [
   {
     title: "Lazy (Android)",
     description:"",
-    avatar: "",
+    avatar: require("./assets/images/lazy.png"),
     gitHubLink: "https://github.com/SegevHaviv/Lazy",
     codePenLink: "",
     liveDemo: "",
@@ -102,7 +102,7 @@ export const projectsData = [
     title: "Traveler (Android)",
     description:
       "",
-    avatar: "",
+    avatar: require("./assets/images/traveler.png"),
     gitHubLink: "https://github.com/SegevHaviv/Traveler",
     codePenLink: "",
     liveDemo: "",

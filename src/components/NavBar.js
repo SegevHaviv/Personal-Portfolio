@@ -18,7 +18,7 @@ const styles = theme => ({
     textTransform: "capitalize",
     marginLeft: 20,
     fontSize: 28,
-    fontFamily: "Montserrat"
+    fontFamily: "Oxygen"
   },
   titleContainer: {
     marginRight: "auto",
@@ -32,6 +32,7 @@ const styles = theme => ({
     color: "inherit",
     textDecoration: "none"
   },
+
 });
 
 class NavBar extends Component {

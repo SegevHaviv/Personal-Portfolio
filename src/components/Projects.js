@@ -7,8 +7,7 @@ import { Tabs, Tab, withStyles , Typography , Card , CardMedia , CardContent , B
 
 const styles = theme => ({
   root: {
-    overflowX: "hidden",
-    height:"calc(100% - 48px)"
+
   },
   card: {
     maxWidth: 300
@@ -28,15 +27,21 @@ const styles = theme => ({
   tabsNavigator:{
     color:"white",
     [theme.breakpoints.down('xs')] : {
-      position:'absolute',
-      bottom: 0,
-      right:0,
-      left:0,
-      background: "#232526",  /* fallback for old browsers */
-      background: "-webkit-linear-gradient(to right, #414345, #232526)",  /* Chrome 10-25, Safari 5.1-6 */
-      background: "linear-gradient(to top, #000000, #232526)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
-    },
-  }
+      // position:'absolute',
+      // bottom: 0,
+      // right:0,
+      // left:0,
+      // background: "#232526",  /* fallback for old browsers */
+      // background: "-webkit-linear-gradient(to right, #414345, #232526)",  /* Chrome 10-25, Safari 5.1-6 */
+      // background: "linear-gradient(to top, #000000, #232526)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+     },
+  },
+  gridContainer: {
+    width:"80%",
+    margin:"auto"
+  },
+  
 });
 
 function Projects(props){
@@ -54,11 +59,12 @@ function Projects(props){
         <div className={classes.root}>
 
           {/* Mapping the categories to tabs */}
-            <Tabs 
+          <Tabs 
             centered 
             value={value} 
             className={classes.tabsNavigator}
             onChange={handleChange}
+            style={{zIndex: 1}}
             >
 
               {
@@ -69,9 +75,8 @@ function Projects(props){
 
             </Tabs>
 
-          <div style={{ width: "80%", margin: "auto",marginTop:30 }}>
           
-            <Grid container spacing={24} justify="center" alignItems="center">
+            <Grid container className={classes.gridContainer}spacing={24} justify="center" alignItems="center">
               {specificData.map(project => {
                 return (
                   <Grid item xs={4} key={project.title} style={{minWidth: 300}}>
@@ -131,7 +136,6 @@ function Projects(props){
               })}
             </Grid>
           </div>
-        </div>
       </Fade>
     </Fragment>
   );

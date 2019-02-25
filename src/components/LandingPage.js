@@ -1,5 +1,5 @@
 
-import React, { PureComponent } from "react";
+import React from "react";
 import avatar from "../assets/images/avatarImg.png";
 import "../App.css";
 import { landingPageIcons } from "../store";
@@ -27,7 +27,6 @@ const styles = theme => ({
     color: "white"
   },
   avatar: {
-    fontSize: "100",
     margin: "auto",
     [theme.breakpoints.up('sm')]: {
       width: "25%",
@@ -45,24 +44,18 @@ const styles = theme => ({
   icons:{
     [theme.breakpoints.up('sm')]: {
       fontSize: 50,   
-      marginRight: 25,
+      marginRight: theme.spacing.unit * 3,
 
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: 50,
       marginRight: 0,
     }
-    
   },
-  name: {
-
-  },
-  title: {
-
-  },
-  skills: {
-
-  }
+    // tooltip: {
+  //   backgroundColor: "black",
+  //   fontSize: "0.7em"
+  // },
 });
 
 function LandingPage(props){
@@ -97,11 +90,10 @@ function LandingPage(props){
                 return (
                     <Tooltip  key={dataIcon.title}  TransitionComponent={Fade}
                     disableFocusListener={true}  title={dataIcon.title}
+  
                     > 
-
-
                     <IconButton
-                    style={{}}
+                    
                       key={dataIcon.link}
                       color="inherit" target="blank"
                       href={dataIcon.link} className={`${dataIcon.icon} ${classes.icons}`}
