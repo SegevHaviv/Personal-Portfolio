@@ -8,7 +8,7 @@ import { Tabs, Tab, withStyles , Typography , Card , CardMedia , CardContent , B
 const styles = theme => ({
   root: {
     overflowX: "hidden",
-    height:"100%"
+    height:"calc(100% - 48px)"
   },
   card: {
     maxWidth: 300
