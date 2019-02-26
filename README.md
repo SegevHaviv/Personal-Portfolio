@@ -1,6 +1,6 @@
 <h1> Segev Haviv's Portfolio </h1>
 
-Portfolio project was built with React & Material-Ui for styling, using the newly released hooks addition.
+Portfolio project programmed with React & Material-Ui for styling, using the newly released hooks addition.
 
 Running on www.segevhaviv.com , My resume can also be viewed through there by going to 'Resume' tab through the drawer.
 
