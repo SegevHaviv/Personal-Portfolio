@@ -48,16 +48,16 @@ function Resume(props){
         <iframe 
         className={classes.resumeDocument}
         title="resumeWord"
-        src="https://docs.google.com/document/d/e/2PACX-1vTQXowFxP6P5j14ksjD4zrhtDzlPWtpf-qAlj1m1I1t7KLwbuUKhFbF1xlA3vcc0AEzvcdDGgMmnnP2/pub?embedded=true"/>
+        src="https://docs.google.com/document/d/e/2PACX-1vTASq-18lB-a7bwuwv6wFOqF6BhkaYJfXQejDHaOfZ0fcHT7VN_CMCsRKTs2mRghVPBSknU81yg8Mg6/pub?embedded=true"/>
         </div>
-
+        
           <div className={classes.iconContainer}>
           <Tooltip TransitionComponent={Fade}
           disableFocusListener={true}  title={"Google Drive"}
           // classes={props.classes}
           > 
             <a
-              href="https://drive.google.com/file/d/1mG3tYOZOryvGzzWiTKaWgEjtnjCtmifT/view?usp=sharing"
+              href="https://drive.google.com/file/d/1ErCGFJu5kRgM2MQ_a0m-oO5f-9cvN2p8/view?usp=sharing"
               rel="noopener noreferrer" target="_blank"
               >
               <i className={`fab fa-google-drive ${classes.documentIcon}`}></i>

@@ -11,7 +11,8 @@ import ProjectIcon from '@material-ui/icons/Work';
 import ResumeIcon from '@material-ui/icons/Description';
 import MailIcon from '@material-ui/icons/Mail';
 
-const drawerWidth = 300;
+const bigScreenDrawerWidth = 300;
+const smallScreenDrawerWidth = 200;
 
 const styles = theme => ({
   root: {
@@ -23,8 +24,14 @@ const styles = theme => ({
     }),
   },
   appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
+    [theme.breakpoints.up('sm')]:{
+      width: `calc(100% - ${bigScreenDrawerWidth}px)`,
+      marginLeft: bigScreenDrawerWidth,
+    },
+    [theme.breakpoints.down('xs')]:{
+      width: `calc(100% - ${smallScreenDrawerWidth}px)`,
+      marginLeft: smallScreenDrawerWidth,
+    },
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -38,7 +45,12 @@ const styles = theme => ({
   },
 
   drawerPaper: {
-    width: drawerWidth,
+    [theme.breakpoints.up('sm')]:{
+      width: bigScreenDrawerWidth,
+    },
+    [theme.breakpoints.down('xs')]:{
+      width: smallScreenDrawerWidth,
+    },
     background: "#0a0b0c",
     color: "white",
   },
@@ -50,7 +62,13 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    [theme.breakpoints.up('sm')]:{
+      marginLeft: -bigScreenDrawerWidth,
+    },
+    [theme.breakpoints.down('xs')]:{
+      marginLeft: -smallScreenDrawerWidth,
+    },
+   
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

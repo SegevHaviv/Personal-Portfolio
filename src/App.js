@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles, CssBaseline,Fade } from "@material-ui/core";
 import background_image from "./assets/images/backgroundimage.jpg";
 
-import NavBar from "./components/NavBar.js";
+import NavBar from "./components/Layout/NavBar.js";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Resume from "./components/Resume";

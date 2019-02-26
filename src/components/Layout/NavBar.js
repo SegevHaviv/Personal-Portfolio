@@ -17,7 +17,6 @@ const styles = theme => ({
   title: {
     textTransform: "capitalize",
     marginLeft: 20,
-    fontSize: 28,
     fontFamily: "Oxygen"
   },
   titleContainer: {

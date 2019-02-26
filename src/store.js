@@ -38,9 +38,20 @@ export const projectsData = [
     liveDemo: "",
     category: categoryEnum.REACT
   },
+  
+  {
+    title: "Portfolio",
+    description:
+      "My personal portfolio, developed with React, Material UI and the recently released hooks.",
+    avatar: require("./assets/images/portfolio.png"),
+    gitHubLink: "https://github.com/SegevHaviv/portfolio",
+    codePenLink: "",
+    liveDemo: "",
+    category: categoryEnum.REACT
+  },
   {
     title: "Calculator",
-    description: "Simple React calculator",
+    description: "Simple React calculator, used recently released hooks.",
     avatar: require("./assets/images/calculator.png"),
     gitHubLink: "https://github.com/SegevHaviv/Calculator-ReactJS",
     codePenLink: "",
@@ -50,19 +61,8 @@ export const projectsData = [
  
   
   {
-    title: "Portfolio",
-    description:
-      "My personal portfolio, developed with React and Material UI technologies.",
-    avatar: require("./assets/images/portfolio.png"),
-    gitHubLink: "https://github.com/SegevHaviv/portfolio",
-    codePenLink: "",
-    liveDemo: "",
-    category: categoryEnum.REACT
-  },
-  
-  {
     title: "Image Proccessing",
-    description: "Auto coloring of black and white pictures.",
+    description: "Machine learning algorithm to auto color a black and white pictures. Using Keras & TensorFlow.",
     avatar: require("./assets/images/autoColor.png"),
     gitHubLink: "https://github.com/SegevHaviv/Image-Proccessing-Project",
     codePenLink: "",
@@ -72,7 +72,7 @@ export const projectsData = [
   {
     title: "Sentiment Analysis",
     description:
-      "",
+      "Machine learning algoritghm which by given it a review of a movie it can determine if it's positive, negative or netural. Using NLTK algorithms. ",
     avatar: require("./assets/images/nltk.png"),
     gitHubLink: "https://github.com/SegevHaviv/NLTK-Sentiment-Analysis",
     codePenLink: "",
@@ -91,7 +91,7 @@ export const projectsData = [
   },
   {
     title: "Lazy (Android)",
-    description:"",
+    description:"Motion detection program which detects hands movements and according to that controls the smart-phone / TV functions. The detection is being done by machine learning image proccessing algorithm.",
     avatar: require("./assets/images/lazy.png"),
     gitHubLink: "https://github.com/SegevHaviv/Lazy",
     codePenLink: "",
@@ -101,7 +101,7 @@ export const projectsData = [
   {
     title: "Traveler (Android)",
     description:
-      "",
+      "Application that allows users to post their experiences from trips around the world. Using Firebase and based on VM architecture.",
     avatar: require("./assets/images/traveler.png"),
     gitHubLink: "https://github.com/SegevHaviv/Traveler",
     codePenLink: "",
