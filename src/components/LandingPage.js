@@ -82,7 +82,7 @@ function LandingPage(props){
             <hr variant="middle" className={classes.bannerHr} />
 
             <Typography className={`${classes.bannerText} ${classes.title}`} gutterBottom variant="h6">
-              HTML & CSS | Bootstrap | JavaScript | React | NodeJS | Express | MongoDB
+              HTML & CSS | Bootstrap | JavaScript | React | Redux | NodeJS | Express | MongoDB
             </Typography>
 
               {
