@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "fc5da6386ea0adcb12d7",
+    "revision": "4b611b32c22267a81032",
     "url": "/static/css/main.bddd61fb.chunk.css"
   },
   {
-    "revision": "fc5da6386ea0adcb12d7",
-    "url": "/static/js/main.fc5da638.chunk.js"
+    "revision": "4b611b32c22267a81032",
+    "url": "/static/js/main.4b611b32.chunk.js"
   },
   {
     "revision": "6e6379dd2b02d448c6ab",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/static/media/traveler.2a924863.png"
   },
   {
-    "revision": "b3d97a9605187edc9d56c29ca10ff0b6",
+    "revision": "c2f6cdd358d3a59be71b7b76d534f9e5",
     "url": "/index.html"
   }
 ];
