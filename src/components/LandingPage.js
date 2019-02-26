@@ -13,14 +13,14 @@ const styles = theme => ({
     textAlign: "center",
     margin: "auto",
     color:"white",
-    width: "55%",
+
     [theme.breakpoints.down('xs')]:{
       marginTop: theme.spacing.unit * 3,
       width: "85%",
     },
     [theme.breakpoints.up('sm')]:{
       marginTop: theme.spacing.unit * 8,
-      
+      width: "60%",
     }
   },
   bannerHr: {
