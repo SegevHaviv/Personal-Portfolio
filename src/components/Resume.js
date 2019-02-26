@@ -48,7 +48,7 @@ function Resume(props){
         <iframe 
         className={classes.resumeDocument}
         title="resumeWord"
-        src="https://docs.google.com/document/d/e/2PACX-1vTASq-18lB-a7bwuwv6wFOqF6BhkaYJfXQejDHaOfZ0fcHT7VN_CMCsRKTs2mRghVPBSknU81yg8Mg6/pub?embedded=true"/>
+        src="https://docs.google.com/document/d/e/2PACX-1vQyw2WHh1z6LwlCKnfRasqvxA_2b5H_0s5dTWBZlUBIEl5k3NodmJbH_Fs_WtpQEq6orW2DEs9doDGJ/pub?embedded=true"/>
         </div>
         
           <div className={classes.iconContainer}>
@@ -57,7 +57,7 @@ function Resume(props){
           // classes={props.classes}
           > 
             <a
-              href="https://drive.google.com/file/d/1ErCGFJu5kRgM2MQ_a0m-oO5f-9cvN2p8/view?usp=sharing"
+              href="https://drive.google.com/file/d/1BWM6-m2zL51kP1gf2tINOMtXWwyVFFQn/view?usp=sharing"
               rel="noopener noreferrer" target="_blank"
               >
               <i className={`fab fa-google-drive ${classes.documentIcon}`}></i>
@@ -69,7 +69,7 @@ function Resume(props){
           disableFocusListener={true}  title={"One Drive"}> 
           
             <a
-              href="https://1drv.ms/w/s!AruKrT6K1gHDgZB3kOXKMSkfVGqmag"
+              href="https://1drv.ms/w/s!AruKrT6K1gHDgZB5GismPR1vtzidXA"
               rel="noopener noreferrer" target="_blank"
             >
               <i className={`fas fa-cloud  ${classes.documentIcon}`}></i>
