@@ -1,14 +1,24 @@
 /* eslint-disable no-dupe-keys */
-import React, { Fragment,useState } from "react";
-import { projectsData, categoryEnum } from "../store";
-import { Tabs, Tab, withStyles , Typography , Card , CardMedia , CardContent , Button , Grid,
-        Fade,  Divider } from "@material-ui/core";
+import React, { Fragment, useState } from "react";
+import PropTypes from "prop-types";
 
+import { projectsData, projectsCategories } from "../store";
+import {
+  Tabs,
+  Tab,
+  withStyles,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Button,
+  Grid,
+  Fade,
+  Divider
+} from "@material-ui/core";
 
 const styles = theme => ({
-  root: {
-
-  },
+  root: {},
   card: {
     maxWidth: 300
   },
@@ -24,120 +34,131 @@ const styles = theme => ({
     textTransform: "capitalize",
     flexGrow: 1
   },
-  tabsNavigator:{
-    color:"white",
-    [theme.breakpoints.down('xs')] : {
-      // position:'absolute',
-      // bottom: 0,
-      // right:0,
-      // left:0,
-      // background: "#232526",  /* fallback for old browsers */
-      // background: "-webkit-linear-gradient(to right, #414345, #232526)",  /* Chrome 10-25, Safari 5.1-6 */
-      // background: "linear-gradient(to top, #000000, #232526)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-     },
+  tabsNavigator: {
+    color: "white",
+    marginBottom: theme.spacing.unit * 3
   },
   gridContainer: {
-    width:"80%",
-    margin:"auto"
-  },
-  
+    width: "80%",
+    margin: "auto"
+  }
 });
 
-function Projects(props){
-  const [value,setValue] = useState(categoryEnum.REACT);
-  const { classes } = props;
-  const specificData = projectsData.filter(x => x.category === value);
+function getDataByCategory(projectsData, category) {
+  return category === projectsCategories.ALL
+    ? projectsData
+    : projectsData.filter(x => x.category === category);
+}
 
-  function handleChange(event, value){
-    setValue(value);
-  };
+function Projects(props) {
+  const [category, setCurrentCategory] = useState(projectsCategories.ALL);
+  const { classes } = props;
+
+  const specificData = getDataByCategory(projectsData, category);
+
+  function handleChange(event, category) {
+    setCurrentCategory(category);
+  }
 
   return (
     <Fragment>
       <Fade in timeout={750}>
         <div className={classes.root}>
-
-          {/* Mapping the categories to tabs */}
-          <Tabs 
-            centered 
-            value={value} 
+          <Tabs
+            centered
+            value={category}
             className={classes.tabsNavigator}
             onChange={handleChange}
-            style={{zIndex: 1}}
-            >
+            style={{ zIndex: 1 }}
+          >
+            {Object.entries(projectsCategories).map(([key, value]) => (
+              <Tab
+                key={key}
+                label={value}
+                value={value}
+                style={{ textTransform: "capitalize", fontSize: "1em" }}
+              />
+            ))}
+          </Tabs>
 
-              {
-              Object.entries(categoryEnum).map(([key, value]) => 
-              <Tab key={key} label={value} value={value} 
-              style={{textTransform:'capitalize',fontSize:"1em"}}/>)
-              }
+          <Grid
+            container
+            className={classes.gridContainer}
+            spacing={24}
+            justify="center"
+            alignItems="center"
+          >
+            {specificData.map(project => {
+              return (
+                <Grid item xs={4} key={project.title} style={{ minWidth: 300 }}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.media}
+                      image={project.avatar}
+                      title={project.title}
+                    />
+                    <CardContent className={classes.media}>
+                      <Typography gutterBottom align="center" variant="h5">
+                        {project.title}
+                      </Typography>
 
-            </Tabs>
+                      <Typography
+                        align="center"
+                        className={classes.description}
+                      >
+                        {project.description}
+                      </Typography>
+                    </CardContent>
 
-          
-            <Grid container className={classes.gridContainer}spacing={24} justify="center" alignItems="center">
-              {specificData.map(project => {
-                return (
-                  <Grid item xs={4} key={project.title} style={{minWidth: 300}}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.media}
-                        image={project.avatar}
-                        title={project.title}
+                    <Divider />
+                    <div style={{ textAlign: "center" }}>
+                      <Button
+                        variant="text"
+                        className={classes.cardButton}
+                        color="primary"
+                        target="_blank"
+                        href={project.gitHubLink}
+                        style={{
+                          display: project.gitHubLink ? "inline" : "none"
+                        }}
+                        children="GitHub"
                       />
-                      <CardContent className={classes.media}>
-                        <Typography gutterBottom align="center" variant="h5">
-                          {project.title}
-                        </Typography>
 
-                        <Typography
-                          align="center"
-                          className={classes.description}
-                        >
-                          {project.description}
-                        </Typography>
-                      </CardContent>
+                      <Button
+                        className={classes.cardButton}
+                        color="primary"
+                        target="_blank"
+                        href={project.codePenLink}
+                        style={{
+                          display: project.codePenLink ? "inline" : "none"
+                        }}
+                        children="CodePen"
+                      />
 
-                      <Divider />
-                      <div style={{ textAlign: "center" }}>
-                        <Button
-                          variant="text"
-                          className={classes.cardButton}
-                          color="primary"
-                          target="_blank"
-                          href={project.gitHubLink}                      
-                          style={{display : project.gitHubLink ? "inline" : "none"}}
-                          children="GitHub"
-                        />
-
-                        <Button
-                          className={classes.cardButton}
-                          color="primary"
-                          target="_blank"
-                          href={project.codePenLink}
-                          style={{display : project.codePenLink ? "inline" : "none"}}
-                          children="CodePen"
-                        />
-                          
-                        <Button
-                          className={classes.cardButton}
-                          color="primary"
-                          target="_blank"                     
-                          href={project.liveDemo}
-                          style={{display : project.liveDemo ? "inline" : "none"}}
-                          children="LiveDemo"
-                        />
-              
-                      </div>
-                    </Card>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </div>
+                      <Button
+                        className={classes.cardButton}
+                        color="primary"
+                        target="_blank"
+                        href={project.liveDemo}
+                        style={{
+                          display: project.liveDemo ? "inline" : "none"
+                        }}
+                        children="LiveDemo"
+                      />
+                    </div>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </div>
       </Fade>
     </Fragment>
   );
 }
+
+Projects.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
 export default withStyles(styles)(Projects);

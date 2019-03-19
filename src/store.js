@@ -21,24 +21,14 @@ export const landingPageIcons = [
   }
 ];
 
-export const categoryEnum = {
+export const projectsCategories = {
+  ALL: "All",
   REACT: "React",
   JAVA: "Java",
   MACHINELEARNING: "Machine Learning"
 };
 
 export const projectsData = [
-  {
-    title: "Random Quote Machine",
-    description:
-      "Randomly picking a quote upon clicking a button, developed with React and Bootstrap mainly.",
-    avatar: require("./assets/images/random-quote-machine.png"),
-    gitHubLink: "https://github.com/SegevHaviv/Quote-Machine",
-    codePenLink: "",
-    liveDemo: "",
-    category: categoryEnum.REACT
-  },
-  
   {
     title: "Portfolio",
     description:
@@ -47,7 +37,7 @@ export const projectsData = [
     gitHubLink: "https://github.com/SegevHaviv/portfolio",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.REACT
+    category: projectsCategories.REACT
   },
   {
     title: "Calculator",
@@ -56,18 +46,18 @@ export const projectsData = [
     gitHubLink: "https://github.com/SegevHaviv/Calculator-ReactJS",
     codePenLink: "",
     liveDemo: "https://segevhaviv.github.io/Calculator-ReactJS/",
-    category: categoryEnum.REACT
+    category: projectsCategories.REACT
   },
- 
-  
+
   {
     title: "Image Proccessing",
-    description: "Machine learning algorithm to auto color a black and white pictures. Using Keras & TensorFlow.",
+    description:
+      "Machine learning algorithm to auto color a black and white pictures. Using Keras & TensorFlow.",
     avatar: require("./assets/images/autoColor.png"),
     gitHubLink: "https://github.com/SegevHaviv/Image-Proccessing-Project",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.MACHINELEARNING
+    category: projectsCategories.MACHINELEARNING
   },
   {
     title: "Sentiment Analysis",
@@ -77,7 +67,7 @@ export const projectsData = [
     gitHubLink: "https://github.com/SegevHaviv/NLTK-Sentiment-Analysis",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.MACHINELEARNING
+    category: projectsCategories.MACHINELEARNING
   },
   {
     title: "Sokoban",
@@ -87,16 +77,17 @@ export const projectsData = [
     gitHubLink: "https://github.com/SegevHaviv/Sokoban-Game",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.JAVA
+    category: projectsCategories.JAVA
   },
   {
     title: "Lazy (Android)",
-    description:"Motion detection program which detects hands movements and according to that controls the smart-phone / TV functions. The detection is being done by machine learning image proccessing algorithm.",
+    description:
+      "Motion detection program which detects hands movements and according to that controls the smart-phone / TV functions. The detection is being done by machine learning image proccessing algorithm.",
     avatar: require("./assets/images/lazy.png"),
     gitHubLink: "https://github.com/SegevHaviv/Lazy",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.JAVA
+    category: projectsCategories.JAVA
   },
   {
     title: "Traveler (Android)",
@@ -106,6 +97,13 @@ export const projectsData = [
     gitHubLink: "https://github.com/SegevHaviv/Traveler",
     codePenLink: "",
     liveDemo: "",
-    category: categoryEnum.JAVA
-  },
+    category: projectsCategories.JAVA
+  }
 ];
+
+export const NAVBAR_INDEX = {
+  LANDING_PAGE: 0,
+  PROJECTS: 1,
+  RESUME: 2,
+  CONTACT: 3
+};

@@ -1,121 +1,155 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-import { withStyles , Grid , Avatar , Typography , Divider , Fade } from "@material-ui/core";
+import {
+  withStyles,
+  Grid,
+  Avatar,
+  Typography,
+  Divider,
+  Fade
+} from "@material-ui/core";
 import avatar from "../assets/images/avatarImg.png";
-import { useTheme } from '@material-ui/styles';
-import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
+import * as Strings from "../constants/Strings";
+import { useTheme } from "@material-ui/styles";
+import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMediaQuery";
 
 const styles = theme => ({
-  root: {  
-    marginTop:35, 
+  root: {
+    marginTop: theme.spacing.unit * 4
   },
   contactGridContainer: {
     background: "white",
     border: "2px solid grey",
     margin: "auto",
 
-    [theme.breakpoints.up('sm')]:{
+    [theme.breakpoints.up("sm")]: {
       width: "75%",
-      height: "70%",
+      height: "70%"
     },
-    [theme.breakpoints.down('xs')]:{
+    [theme.breakpoints.down("xs")]: {
       width: "95%",
-      height: "70%",
+      height: "70%"
     }
   },
-  contactGridOtem: {
-    marginTop: 20,
-  },
+
   avatar: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: "35vw",
       height: "25vh",
-      marginBottom: 20,
+      marginBottom: 20
     },
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: "35%",
-      height: "35%",
+      height: "35%"
     },
     margin: "auto"
   },
   descrpitionText: {
-    marginTop: 35,
+    marginTop: theme.spacing.unit * 4,
     fontFamily: "Oxygen"
   },
   contactDetails: {
     fontFamily: "Oxygen"
   },
   contactIcon: {
-    [theme.breakpoints.up('sm')]:{
-      margin: 25,
+    [theme.breakpoints.up("sm")]: {
+      margin: theme.spacing.unit * 3
     },
-    [theme.breakpoints.down('xs')]:{
+    [theme.breakpoints.down("xs")]: {
       width: "100%",
-      marginTop: 50,
+      marginTop: theme.spacing.unit * 6,
       fontSize: 30,
-      textAlign:'center',
-      
+      textAlign: "center"
     }
+  },
+  divider: {
+    backgroundColor: "black"
   }
 });
 
 function Contact(props) {
   const { classes } = props;
   const theme = useTheme();
-  const smallScreen = useMediaQuery(theme.breakpoints.down('xs'));
-  
+  const smallScreen = useMediaQuery(theme.breakpoints.down("xs"));
+
   return (
-     
-      <div className={classes.root}>
-        <Fade in timeout={750}>
-          <Grid container spacing={24} className={classes.contactGridContainer}>
-            <Grid item xs={6} className={classes.contactGridItem}>
-               <Typography gutterBottom variant={smallScreen ? "h5" : "h2"} align='center' style={{ fontFamily: "Raleway" }}>
-                 Segev Haviv
-               </Typography>
+    <div className={classes.root}>
+      <Fade in timeout={750}>
+        <Grid container spacing={24} className={classes.contactGridContainer}>
+          <Grid item xs={6}>
+            <Typography
+              gutterBottom
+              variant={smallScreen ? "h5" : "h2"}
+              align="center"
+              style={{ fontFamily: "Raleway" }}
+            >
+              {Strings.NAME}
+            </Typography>
 
-               <Avatar className={classes.avatar} src={avatar} alt="avatar" />
+            <Avatar className={classes.avatar} src={avatar} alt="avatar" />
 
-               <Typography className={classes.descrpitionText} variant={smallScreen ? "subtitle1" : "h6"} align='center'>
-                  Junior full stack developer with great passion for code,
-                  especially for web technologies, autodidact with high
-                  motivitaion to learn and get my hands dirty.
-               </Typography>
-            </Grid>
-
-            <Grid item xs={6} className={classes.contactGridItem}>
-
-              <Typography gutterBottom variant={smallScreen ? "h5" : "h2"} align='center' style={{ fontFamily: "Raleway"}}>
-                Contact Me
-              </Typography>
-
-              <Divider style={{ backgroundColor: "black" }} />
-              
-              <Typography  variant={smallScreen ? "subtitle1" : "h4"}
-               className={classes.contactDetails} >
-                <i className={`fa fa-phone-square ${classes.contactIcon}`} />
-                +972-527363711
-              </Typography>
-              
-              <Typography  variant={smallScreen ? "body2" : "h4"} 
-              className={classes.contactDetails} align="center" inline={true}>
-                <i  className={`fa fa-envelope ${classes.contactIcon}`} />
-                
-               segevhaviv@gmail.com
-              </Typography>
-
- 
-              <Typography  variant={smallScreen ? "subtitle1" : "h4"}
-               className={classes.contactDetails} align="center" inline={true}>
-                <i className={`fa fa-home ${classes.contactIcon}`}/>
-                {smallScreen ? <div>Holon, Israel</div> : <span>Holon, Israel</span>}
-              </Typography>
-
-             </Grid>
+            <Typography
+              className={classes.descrpitionText}
+              variant={smallScreen ? "subtitle1" : "h6"}
+              align="center"
+            >
+              {Strings.DESCRIPTION}
+            </Typography>
           </Grid>
-        </Fade>
-      </div>
+
+          <Grid item xs={6}>
+            <Typography
+              gutterBottom
+              variant={smallScreen ? "h5" : "h2"}
+              align="center"
+              style={{ fontFamily: "Raleway" }}
+            >
+              {Strings.CONTACT_ME_TITLE}
+            </Typography>
+
+            <Divider className={classes.divider} />
+
+            <Typography
+              variant={smallScreen ? "subtitle1" : "h4"}
+              className={classes.contactDetails}
+            >
+              <i className={`fa fa-phone-square ${classes.contactIcon}`} />
+              {Strings.PHONE}
+            </Typography>
+
+            <Typography
+              variant={smallScreen ? "body2" : "h4"}
+              className={classes.contactDetails}
+              align="center"
+              inline={true}
+            >
+              <i className={`fa fa-envelope ${classes.contactIcon}`} />
+              {Strings.EMAIL}
+            </Typography>
+
+            <Typography
+              variant={smallScreen ? "subtitle1" : "h4"}
+              className={classes.contactDetails}
+              align="center"
+              inline={true}
+            >
+              <i className={`fa fa-home ${classes.contactIcon}`} />
+              {smallScreen ? (
+                <div>{Strings.RESIDENCE_LOCATION}</div>
+              ) : (
+                <span>{Strings.RESIDENCE_LOCATION}</span>
+              )}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Fade>
+    </div>
   );
 }
+
+Contact.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Contact);
