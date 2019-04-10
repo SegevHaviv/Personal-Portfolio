@@ -1,0 +1,25 @@
+.card {
+  max-width: 300px;
+}
+
+.media {
+  height: 180px;
+  text-align: center;
+  justify-content: center;
+}
+
+.cardButton {
+  font-family: "Oxygen";
+  text-transform: capitalize;
+  flex-grow: 1;
+}
+
+.tabsNavigator {
+  color: white;
+  margin-bottom: 24px;
+}
+
+.gridContainer {
+  width: 80%;
+  margin: auto;
+}

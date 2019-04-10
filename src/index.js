@@ -4,7 +4,7 @@ import App from "./App";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core";
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
   typography: {
     useNextVariants: true
   }

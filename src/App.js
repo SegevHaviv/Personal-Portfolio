@@ -4,7 +4,7 @@ import { withStyles, CssBaseline, Fade } from "@material-ui/core";
 import background_image from "./assets/images/backgroundimage.jpg";
 import { NAVBAR_INDEX } from "./store";
 
-import NavBar from "./components/Layout/NavBar.js";
+import NavBar from "./components/Layout/NavBar";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Resume from "./components/Resume";
@@ -16,6 +16,7 @@ const styles = theme => ({
       height: "100%"
     }
   },
+
   root: {
     overflowX: "hidden",
     width: "100%",

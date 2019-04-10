@@ -1,9 +1,8 @@
-/* eslint-disable no-dupe-keys */
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { withStyles, CssBaseline, Fade, Tooltip } from "@material-ui/core";
-import * as Strings from "../constants/Strings";
+import * as Strings from "../../constants/Strings";
 
 const styles = theme => ({
   root: {
@@ -37,6 +36,7 @@ function Resume(props) {
   const { classes } = props;
   return (
     <Fragment>
+      <div className="Hi">Hello!</div>
       <CssBaseline />
       <Fade in timeout={750}>
         <div className={classes.root}>
@@ -85,6 +85,10 @@ function Resume(props) {
 
 Resume.propTypes = {
   classes: PropTypes.object.isRequired
+};
+
+Resume.defaultProps = {
+  classes: () => {}
 };
 
 export default withStyles(styles)(Resume);

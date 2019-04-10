@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { useTheme } from "@material-ui/styles";
+import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMediaQuery";
 import {
   withStyles,
   Grid,
@@ -9,10 +11,9 @@ import {
   Divider,
   Fade
 } from "@material-ui/core";
-import avatar from "../assets/images/avatarImg.png";
-import * as Strings from "../constants/Strings";
-import { useTheme } from "@material-ui/styles";
-import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMediaQuery";
+
+import avatar from "../../assets/images/avatarImg.png";
+import * as Strings from "../../constants/Strings";
 
 const styles = theme => ({
   root: {
